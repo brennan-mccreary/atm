@@ -12,6 +12,7 @@ main();
 
 //User menu for interacting with ATM
 function main() {
+    //find account index
     let accIndex;
     do {
         accIndex = findAccount();
@@ -25,7 +26,27 @@ function main() {
             console.log("No account found.");
             accFound = false;
         }
-    } while (accFound === false)
+    } while(accFound === false)
+
+    //validate pin for account
+    do{
+        var pin = promptValid("Enter your 4 digit PIN:  ", num4Digits);
+        var validPin = atm.validatePin(accIndex, pin);
+    } while(validPin === false)
+    
+
+    //Loop until exit code in inputted
+    do {
+        //prompt user for action
+        var action = promptValid("Enter\n'Withdraw' to make a withdraw\n'Deposit' to make a deposit\n'Balance' to check your balance\n'Exit' to end session\n", actionValid);
+        
+        switch(action.toLowerCase()) {
+            case "withdraw": atm.withdraw(); break;
+            case "deposit": atm.deposit(); break;
+            case "balance": atm.balance(); break;
+            default: console.log("Session ended."); return;
+        }
+    } while (action !== "exit")
 }
 
 function findAccount() {
@@ -56,16 +77,27 @@ function num9Digits(input) { //validate 9 digit numeric inputs
         return true;
     }
     else {
-        console.log("Invalid response.")
+        console.log("Invalid input.")
         return false;
     }
 }
 
 function num4Digits(input) { //validate 4 digit numeric inputs
-    if(input.length === 4 && isNaN === false) {
+    if(input.length === 4 && isNaN(input) === false) {
         return true;
     }
     else {
+        console.log("Invalid input.");
         return false;
+    }
+}
+
+function actionValid(input) { //validates responses for action requests
+    switch(input.toLowerCase()) {
+        case "withdraw": return true;
+        case "deposit": return true;
+        case "balance": return true;
+        case "exit": return true;
+        default: console.log("Invalid input."); return false;
     }
 }
