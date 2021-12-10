@@ -11,7 +11,7 @@ const promptSync = ps();
 main();
 
 //User menu for interacting with ATM
-function main() {
+function main() { //distributes calls and handles user experience
     //find account index
     let accIndex;
     do {
@@ -41,15 +41,15 @@ function main() {
         var action = promptValid("Enter\n'Withdraw' to make a withdraw\n'Deposit' to make a deposit\n'Balance' to check your balance\n'Exit' to end session\n", actionValid);
         
         switch(action.toLowerCase()) {
-            case "withdraw": atm.withdraw(); break;
-            case "deposit": atm.deposit(); break;
-            case "balance": atm.balance(); break;
+            case "withdraw": atm.withdraw(accIndex); break;
+            case "deposit": atm.deposit(accIndex); break;
+            case "balance": atm.balance(accIndex); break;
             default: console.log("Session ended."); return;
         }
     } while (action !== "exit")
 }
 
-function findAccount() {
+function findAccount() { //finds user account based on 9 digit account number
     let accNum = promptValid("Enter your 9 digit account number:  ", num9Digits);
     let accIndex;
     let accounts = accList();

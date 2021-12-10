@@ -1,12 +1,4 @@
 "use strict";
-//Contains PIN and balance
-
-
-
-
-
-
-
 //Accounts export function
 function accountExport() {
     let accounts = [
@@ -21,7 +13,6 @@ function accountExport() {
             balance: 1000.67,
         },
     ];
-
     return accounts;
 }
 

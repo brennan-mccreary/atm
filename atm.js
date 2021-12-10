@@ -3,16 +3,21 @@
 const {accList} = require("./account");
 
 //Functions
-function getBalance() { //returns balance of user's account
+function getBalance(index) { //returns balance of user's account
+    let accounts = accList();
+    let balance = accounts[index].balance;
 
+    console.log(formatBalance(balance));
+    console.log("\n\n")
+    return 
 }
 
-function withdraw() { //allows user to withdraw from account
-
+function withdraw(index) { //allows user to withdraw from account
+    let accounts = accList();
 }
 
-function deposit() { //allows user to deposit to account
-
+function deposit(index) { //allows user to deposit to account
+    let accounts = accList();
 }
 
 function validatePin(index, pin) { //validates user's PIN
@@ -26,6 +31,11 @@ function validatePin(index, pin) { //validates user's PIN
     }
 }
 
+function formatBalance(balance) { //formats balance into a currency
+    balance = balance.toString();
+    balance = "$".concat(balance);
+    return balance;
+}
 
 //Export for index.js
 module.exports = {
