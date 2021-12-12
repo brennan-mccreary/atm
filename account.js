@@ -1,7 +1,7 @@
 "use strict";
 //Accounts export function
 function accountExport() {
-    let accounts = [
+    var accounts = [
         {
             accountNum: "123456789",
             PIN: "1234",

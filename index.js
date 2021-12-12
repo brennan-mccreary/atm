@@ -6,6 +6,8 @@ const {accList} = require("./account")
 
 //Declarations
 const promptSync = ps();
+let accounts = [];
+accounts = accList();
 
 //Start call
 main();
@@ -52,7 +54,6 @@ function main() { //distributes calls and handles user experience
 function findAccount() { //finds user account based on 9 digit account number
     let accNum = promptValid("Enter your 9 digit account number:  ", num9Digits);
     let accIndex;
-    let accounts = accList();
 
     for(let i = 0; i < accounts.length; i++ ) {
         if(Object.values(accounts[i]).includes(accNum) === true) {
@@ -70,7 +71,7 @@ function promptValid(question, valid) { //prompts for user input and validates a
       var response = promptSync(question).trim();
     } while(!response || !valid(response));
     return response;
-  }
+}
 
 function num9Digits(input) { //validate 9 digit numeric inputs
     if(input.length === 9 && isNaN(input) === false) {
