@@ -26,11 +26,20 @@ function withdraw(index) { //allows user to withdraw from accoun
     balance /= 100.00;
 
     accounts[index].balance = balance;
-    console.log(`New balance: ${balance}`);
+    console.log(`New balance: $${balance.fixedTo(2)}`);
 }
 
 function deposit(index) { //allows user to deposit to account
-    let accounts = accList();
+    let amount = promptValid("How much would you like to deposit: ", amountValid);
+    
+    amount = parseFloat(amount);
+    amount *= 100.00;
+
+    let balance = ((accounts[index].balance * 100.0) + amount);
+    balance /= 100.00;
+
+    accounts[index].balance = balance;
+    console.log(`New balance: $${balance.fixedTo(2)}`);
 }
 
 function validatePin(index, pin) { //validates user's PIN
