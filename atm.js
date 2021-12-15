@@ -26,7 +26,7 @@ function withdraw(index) { //allows user to withdraw from accoun
     balance /= 100.00;
 
     accounts[index].balance = balance;
-    console.log(`New balance: $${balance.fixedTo(2)}`);
+    console.log(`New balance: $${balance}`);
 }
 
 function deposit(index) { //allows user to deposit to account
@@ -39,7 +39,7 @@ function deposit(index) { //allows user to deposit to account
     balance /= 100.00;
 
     accounts[index].balance = balance;
-    console.log(`New balance: $${balance.fixedTo(2)}`);
+    console.log(`New balance: $${balance}`);
 }
 
 function validatePin(index, pin) { //validates user's PIN

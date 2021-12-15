@@ -40,7 +40,8 @@ function main() { //distributes calls and handles user experience
     //Loop until exit code in inputted
     do {
         //prompt user for action
-        var action = promptValid("Enter\n'Withdraw' to make a withdraw\n'Deposit' to make a deposit\n'Balance' to check your balance\n'Exit' to end session\n", actionValid);
+        console.log("Enter\n'Withdraw' to make a withdraw\n'Deposit' to make a deposit\n'Balance' to check your balance\n'Exit' to end session\n");
+        var action = promptValid("--", actionValid);
         
         switch(action.toLowerCase()) {
             case "withdraw": atm.withdraw(accIndex); break;
